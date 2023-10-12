@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('/var/') {
                     sh 'pwd'
-                    sh 'mvn -version'
+                    sh 'sudo mvn -version'
                     sh 'cd .'
                     echo 'Build Successfully'
                 }
