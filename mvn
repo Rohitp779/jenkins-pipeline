@@ -1,0 +1,13 @@
+pipeline {
+    agent { node { label 'built-in' }}
+    environment {
+        PATH = "${tool 'Maven'}/bin:$PATH"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -version'
+            }
+        }
+    }
+}
