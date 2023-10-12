@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'linux-rohit || build-in' } }
+    agent { node { label 'linux-rohit && build-in' } }
     parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
