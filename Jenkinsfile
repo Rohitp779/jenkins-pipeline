@@ -6,13 +6,11 @@ pipeline {
     stages {
         stage('SCM-Checkout') {
             steps {
-                dir('/home/ec2-user/') {
                     sh 'rm -rf game-of-life'
                     sh 'git clone https://github.com/Dee601/game-of-life.git'
                     echo 'SCM Checkout Sucessfully'
                 }
             }
-        }
         stage('Build') {
             steps {
                 dir('/home/ec2-user/workspace/New-jenkins-pipeline/game-of-life/') {
