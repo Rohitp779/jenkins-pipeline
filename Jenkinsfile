@@ -6,20 +6,30 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World'
+                dir('/home/ec2-user/') {
+                    sh 'pwd'
+                    sh 'cd .'
+                    echo 'Hello World'
+                }
             }
         }
         stage('Build') {
             steps {
-                sh 'java -version'
-                echo 'Build Successfully'
+                dir('/mnt/') {
+                    sh 'pwd'
+                    sh 'java -version'
+                    echo 'Build Successfully'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh 'mvn -version'
-                sh 'cd .'
-                echo 'Build Successfully'
+                dir('/var/') {
+                    sh 'pwd'
+                    sh 'mvn -version'
+                    sh 'cd .'
+                    echo 'Build Successfully'
+                }
             }
         }
     }
