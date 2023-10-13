@@ -1,38 +1,31 @@
 pipeline {
-    agent { node { label 'linux-rohit' } }
-    parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr ROHIT PATIL', description: 'I have created web project deploy pipeline.')
+    agent { node { label 'linux-rohit'
+    customWorkspace '/home/ec2-user' }
     }
     stages {
-        stage('SCM-Checkout') {
+        stage('Checkout') {
             steps {
-                    sh 'rm -rf game-of-life'
-                    sh 'git clone https://github.com/Dee601/game-of-life.git'
-                    echo 'SCM Checkout Sucessfully'
-                }
-            }
-        stage('Build') {
-            steps {
-                dir('/home/ec2-user/workspace/New-jenkins-pipeline/game-of-life/') {
-                    sh 'mvn clean install'
-                    echo 'Build Successfully'
-                }
+                sh '''
+                rm -rf game-of-life
+                git clone https://github.com/Dee601/game-of-life.git
+                cd game-of-life
+                '''
+                echo 'Checkout Successfully'
             }
         }
-       stage('Test') {
+        stage('Build') {
             steps {
-                dir('/home/ec2-user/workspace/New-jenkins-pipeline/game-of-life/') {
-                    sh 'mvn test'
-                    echo 'Test Successfully'
-                }
+                sh '''
+                cd /home/ec2-user/game-of-life
+                mvn clean install
+                '''
+                echo 'Build Successfully'
             }
         }
         stage('Deploy') {
             steps {
-                dir('/home/ec2-user/workspace/New-jenkins-pipeline/game-of-life/gameoflife-web/target/') {
-                    sh 'cp gameoflife.war /mnt/apache-tomcat-9.0.81/webapps/'
-                    echo 'Deployment  Successfully'
-                }
+                sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.81/webapps'
+                echo 'Build Successfully'
             }
         }
     }
