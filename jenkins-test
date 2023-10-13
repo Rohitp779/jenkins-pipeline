@@ -4,13 +4,34 @@ pipeline {
         } }
 
         stages {  
-          stage('Built')
+          stage('Git Checkout')
           {
               steps{
-                    echo 'i have created and typed built succesfully'
+                    echo 'i have created Git Checkout succesfully'
                     sh 'pwd'
                     }
                 }
-            }
+         stage('Built')
+          {
+              steps{
+                    echo 'i have created built succesfully'
+                    sh 'pwd'
+                    }
+                }
+         stage('Test')
+          {
+              steps{
+                    echo 'i have created test succesfully'
+                    sh 'pwd'
+                    }
+                }
+         stage('Deploy')
+          {
+              steps{
+                    echo 'i have created Deploy succesfully'
+                    sh 'pwd'
+                    }
+                }
         }
+}
 
