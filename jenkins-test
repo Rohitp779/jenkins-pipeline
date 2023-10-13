@@ -1,7 +1,8 @@
 pipeline {
         agent none
+        {
         customWorkspace('/home/ec2-user/')
-
+        }
         stages {  
           stage('Git Checkout')
           {
