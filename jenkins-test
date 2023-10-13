@@ -1,14 +1,15 @@
 pipeline {
-        agent { node { label 'built-in'}}
-stages
-{  
-  stage('Built')
-  {
-      steps{
-            echo 'i have created and typed built succesfully'
-            sh 'pwd'
+        agent { node { label 'built-in'
+        customWorkspace('/home/ec2-user') } }
+
+        stages {  
+          stage('Built')
+          {
+              steps{
+                    echo 'i have created and typed built succesfully'
+                    sh 'pwd'
+                    }
+                }
             }
         }
-    }
-}
 
