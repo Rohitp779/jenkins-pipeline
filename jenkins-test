@@ -1,5 +1,5 @@
 pipeline {
-        agent { node { label 'linux-rohit || built-in'
+        agent { node { label 'built-in || linux-rohit'
         customWorkspace('/home/ec2-user/')
         } }
 
