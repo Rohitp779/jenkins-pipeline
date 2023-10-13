@@ -8,9 +8,9 @@ pipeline {
           {
                 steps{
                     sh '''
-                    
                     echo 'i have created Git Checkout succesfully'
-                    sh 'pwd'
+                    pwd
+                    '''
                     }
                 }
          stage('Built')
