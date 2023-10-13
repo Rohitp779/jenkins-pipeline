@@ -6,8 +6,9 @@ pipeline {
         stages {  
           stage('Git Checkout')
           {
-              steps{
-                    pwd
+                steps{
+                    sh '''
+                    
                     echo 'i have created Git Checkout succesfully'
                     sh 'pwd'
                     }
