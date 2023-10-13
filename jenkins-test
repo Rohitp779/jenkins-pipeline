@@ -1,1 +1,14 @@
-hii
+pipeline {
+        agent { node { label 'linux-rohit'}}
+stages
+{  
+  stage('Built')
+  {
+      steps{
+            echo 'i have created and typed built succesfully'
+            sh 'pwd'
+            }
+        }
+    }
+}
+
