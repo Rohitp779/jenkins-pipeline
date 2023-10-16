@@ -5,4 +5,15 @@ pipeline {
             customWorkspace "/home/ec2-user/\$PATH"
         }
     }
+stage('Deploy') {
+    steps {
+        script {
+            def gitRepoUrl = 'https://github.com/Dee601/game-of-life.git'
+            def repoName = gitRepoUrl.tokenize('/')[-1].replaceAll('\\.git', '')
+            def deployPath = "/mnt/apache-tomcat-9.0.81/webapps/${repoName}.war"
+            sh "cp $PATH/gameoflife-web/target/gameoflife.war $deployPath"
+        }
+        echo 'Deploy Successful'
+    }
+}
 }
