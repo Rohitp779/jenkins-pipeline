@@ -5,39 +5,3 @@ pipeline {
             customWorkspace "/home/ec2-user/\$PATH"
         }
     }
-    stages {
-        stage('Checkout') {
-            steps {
-                script {
-                    def gitRepoUrl = 'https://github.com/Dee601/game-of-life.git'
-                    def repoName = gitRepoUrl.tokenize('/')[-1].replaceAll('\\.git', '')
-
-                    // Create a dynamic workspace folder based on the Git repo name
-                    def workspacePath = "/home/ec2-user/${repoName}"
-                    env.PATH = workspacePath
-                }
-                sh '''
-                rm -rf $PATH
-                git clone https://github.com/Dee601/game-of-life.git $PATH
-                cd $PATH
-                '''
-                echo 'Checkout Successfully'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh '''
-                cd $PATH
-                mvn clean install
-                '''
-                echo 'Build Successfully'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'cp $PATH/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.81/webapps'
-                echo 'Deploy Successful'
-            }
-        }
-    }
-}
