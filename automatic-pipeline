@@ -5,3 +5,4 @@ pipeline {
             customWorkspace "/home/ec2-user/\$PATH"
         }
     }
+}
