@@ -1,6 +1,6 @@
 pipeline {
     agent { node { label 'built-in'
-    customWorkspace '/var/jenkins_home/jenkins-cicd/' } //for jenkins docker work dir
+    customWorkspace '/var/jenkins_home/myjenkins/' } //for jenkins docker work dir
     }
     stages {
         stage('Checkout') {
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                cd /home/ec2-user/game-of-life
+                cd /var/jenkins_home/jenkins-cicd/game-of-life
                 mvn clean install
                 '''
                 echo 'Build Successfully'
