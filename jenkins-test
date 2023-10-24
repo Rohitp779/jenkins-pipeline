@@ -1,6 +1,6 @@
 pipeline {
         agent { node { label 'built-in'
-        customWorkspace '/home/ec2-user' }
+        customWorkspace '/var/jenkins_home/' } //for jenkins docker image directory path
         }
         stages {  
           stage('Git Checkout')
