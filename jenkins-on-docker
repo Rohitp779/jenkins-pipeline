@@ -1,0 +1,26 @@
+pipeline {
+    agent { node { label 'built-in'
+    customWorkspace '/var/jenkins_home/myjenkins/' } //for jenkins docker work dir
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                sh '''
+                rm -rf game-of-life
+                git clone https://github.com/Dee601/game-of-life.git
+                cd game-of-life
+                '''
+                echo 'Checkout Successfully'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                cd /var/jenkins_home/jenkins-cicd/game-of-life
+                mvn clean install
+                '''
+                echo 'Build Successfully'
+            }
+        }
+    }
+}
