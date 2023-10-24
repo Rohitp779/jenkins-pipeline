@@ -1,6 +1,6 @@
 pipeline {
     agent { node { label 'built-in'
-    customWorkspace '/mnt' } //for jenkins dokcer container .
+    customWorkspace '/var/jenkins_home/jenkins-cicd/' } //for jenkins docker work dir
     }
     stages {
         stage('Checkout') {
