@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                cd /var/jenkins_home/jenkins-cicd/game-of-life
+                cd /var/jenkins_home/myjenkins/game-of-life
                 mvn clean install
                 '''
                 echo 'Build Successfully'
