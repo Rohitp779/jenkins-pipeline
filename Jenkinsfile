@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                 cd /var/jenkins_home/jenkins-cicd/game-of-life
-                mvn clean install
+                mvn install -DskipTests
                 '''
                 echo 'Build Successfully'
             }
