@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the repository
+                git 'https://github.com/jenkins-docs/simple-java-maven-app.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Maven build
+                sh 'mvn clean package'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Copy the WAR file to Tomcat webapps folder
+                sh '''
+                    cp target/*.war /mnt/apache-tomcat-9.0.83/webapps/
+                '''
+            }
+        }
+        
+        stage('Release') {
+            steps {
+                // Additional steps for release if needed
+                // This stage could involve notifications, tagging, or other release-related tasks
+            }
+        }
+    }
+}
