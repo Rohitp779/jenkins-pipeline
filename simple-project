@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // Copy the WAR file to Tomcat webapps folder
                 sh '''
-                    cp target/*.war /mnt/apache-tomcat-9.0.83/webapps/
+                   ls
                 '''
             }
         }
