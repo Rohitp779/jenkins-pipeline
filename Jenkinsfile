@@ -1,6 +1,6 @@
 pipeline {
     agent { node { label 'built-in'
-    customWorkspace '/var/jenkins_home/myjenkins/' } //for jenkins docker work dir
+    customWorkspace '/mnt/' }
     }
     stages {
         stage('Checkout') {
