@@ -27,6 +27,7 @@ pipeline {
         
         stage('Release') {
             steps {
+                sh 'pwd'
                 // Additional steps for release if needed
                 // This stage could involve notifications, tagging, or other release-related tasks
             }
