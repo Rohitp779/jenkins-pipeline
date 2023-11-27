@@ -1,6 +1,6 @@
 pipeline {
     agent { node { label 'built-in'
-    customWorkspace '/var/jenkins_home/jenkins-cicd/' }
+    customWorkspace '/home/ec2-user/gameoflife/' }
     }
     stages {
         stage('Checkout') {
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                cd /var/jenkins_home/jenkins-cicd/game-of-life
+                cd /home/ec2-user/gameoflife/game-of-life
                 mvn install -DskipTests
                 '''
                 echo 'Build Successfully'
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.81/webapps'
+                sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.83/webapps'
                 echo 'Build Successfully'
             }
         }
