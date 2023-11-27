@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                 cd /home/ec2-user/gameoflife/game-of-life
-                //mvn compile
+            
                 '''
                 echo 'Build Successfully'
             }
