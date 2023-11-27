@@ -17,14 +17,14 @@ pipeline {
             steps {
                 sh '''
                 cd /home/ec2-user/gameoflife/game-of-life
-                mvn  clean install
+                //mvn compile
                 '''
                 echo 'Build Successfully'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.83/webapps'
+                //sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.83/webapps'
                 echo 'Build Successfully'
             }
         }
